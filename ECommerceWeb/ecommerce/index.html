@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Login</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="./Scripts/app.js"></script>
+    <script src="./Scripts/product.js"></script>
+</head>
+<body ng-app="transflower">
+
+    <div ng-controller="LoginController">
+        <div>
+            <ol ng-repeat="user in users">
+                <li >{{user.email}}{{user.pass}}</li>
+            </ol>
+        </div>
+    
+    </div>
+
+    <div ng-controller="ProductController">
+        <ol ng-repeat="product in products">
+            <li >{{product.productId}}{{product.productName}}{{product.productPrice}}{{product.Productdescription}}</li>
+        </ol>
+    </div>
+
+    <h1>TFL STORE</h1>
+    <ol>
+        <li>Gerbera</li>
+        <li>Rose</li>
+        <li>Lotus</li>
+    </ol>
+   
+    <form ng-submit="onValidate()">
+        <table>
+            <tr>
+                <td><label>Email</label></td>
+                <td><input type="email" name="email" id="email" ng-model="user.email"></td>
+            </tr>
+            <tr>
+                <td><label>Password</label></td>
+                <td><input type="password" name="password" id="password" ng-model="user.pass"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit">Login</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+
