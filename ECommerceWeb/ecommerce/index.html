@@ -1,53 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AngularJS Login</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    <script src="./Scripts/app.js"></script>
-    <script src="./Scripts/product.js"></script>
+    <title>TFL Store - Product List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="module/app.js"></script>
+    <script src="controller/product.controller.js"></script>
+    <script src="controller/auth.controller.js"></script> 
 </head>
-<body ng-app="transflower">
-
-    <div ng-controller="LoginController">
-        <div>
-            <ol ng-repeat="user in users">
-                <li >{{user.email}}{{user.pass}}</li>
-            </ol>
-        </div>
-    
-    </div>
-
+<body ng-app="Sujit" ng-controller="AuthController">
+    <script>
+        if (!localStorage.getItem("loggedInUser")) {
+            window.location.href = "login.html"; 
+        }
+    </script>
+    <h1>Product List</h1>
+    <button ng-click="logout()" style="background: red; color: white; padding: 8px 15px; border: none; cursor: pointer;">Logout</button>
     <div ng-controller="ProductController">
-        <ol ng-repeat="product in products">
-            <li >{{product.productId}}{{product.productName}}{{product.productPrice}}{{product.Productdescription}}</li>
-        </ol>
+        <div ng-repeat="product in products">
+            <h3>{{ product.name }}</h3>
+            <img ng-src="assets/images/{{ product.image }}" alt="{{ product.name }}" width="150">
+            <p>Price: ₹{{ product.price }}</p>
+            <p>{{ product.description }}</p>
+        </div>
     </div>
-
-    <h1>TFL STORE</h1>
-    <ol>
-        <li>Gerbera</li>
-        <li>Rose</li>
-        <li>Lotus</li>
-    </ol>
-   
-    <form ng-submit="onValidate()">
-        <table>
-            <tr>
-                <td><label>Email</label></td>
-                <td><input type="email" name="email" id="email" ng-model="user.email"></td>
-            </tr>
-            <tr>
-                <td><label>Password</label></td>
-                <td><input type="password" name="password" id="password" ng-model="user.pass"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button type="submit">Login</button></td>
-            </tr>
-        </table>
-    </form>
 </body>
 </html>
 
