@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TFL Store - Product List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="module/app.js"></script>
+    <script src="module/auth.module.js"></script>
+    <script src="module/catlog.module.js"></script>
+    <script src="controller/product.controller.js"></script>
+    <script src="controller/auth.controller.js"></script> 
+    <script src="controller/login.controller.js"></script> 
+</head>
+<body>
+
+<div ng-app="authmodule" ng-controller="AuthController">
+    <script>
+        // if (!localStorage.getItem("loggedInUser")) {
+            window.location.href = "login.html"; 
+        // }
+    </script>
+</div>
+
+<!-- <div ng-app="catlogmodule" ng-controller="catlogmodule"></div>
+    <h1>Product List</h1>
+    <button ng-click="logout()" style="background: red; color: white; padding: 8px 15px; border: none; cursor: pointer;">Logout</button>
+    
+        <div ng-repeat="product in products">
+            <h3>{{ product.name }}</h3>
+            <img ng-src="assets/images/{{ product.image }}" alt="{{ product.name }}" width="150">
+            <p>Price: ₹{{ product.price }}</p>
+            <p>{{ product.description }}</p>
+        </div>
+</div> -->
+  
+</body>
+</html>
+
