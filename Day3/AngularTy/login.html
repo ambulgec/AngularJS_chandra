@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>AngularJS + TypeScript</title>
+    <script src="./angular.min.js"></script>
+    <script src="./dist/controller/app.controller.js"></script>
+    <script src="./dist/app.module.js"></script>
+</head>
+<body >
+  <div ng-app="myLoginApp" id="app-containers">
+      <div ng-controller="MyLoginController as vm">
+        {{ vm.message }}
+        <hr/>
+        <h3>All Users</h3>
+        <div ng-repeat="user in vm.users">
+          <p>{{ user.name }}</p> 
+        </div>
+  </div>
+ 
+  </body>
+</html>

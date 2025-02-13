@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TFL Store - Product List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="module/catlog.module.js"></script>
+    <script src="controller/product.controller.js"></script>
+</head>
+<body ng-app="catlogmodule">
+    <div ng-controller="ProductController">
+        <h1>Product List</h1>
+        <div ng-repeat="product in products">
+            <h3>{{ product.name }}</h3>
+            <img ng-src="assets/images/{{ product.image }}" alt="{{ product.name }}" width="150">
+            <p>Price: ₹{{ product.price }}</p>
+            <p>{{ product.description }}</p>
+        </div>
+    </div>
+</body>
+</html>
+
+

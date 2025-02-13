@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AngularJS + TypeScript - Product List</title>
+
+<!-- AngularJS and TypeScript Files -->
+<script src="./angular.min.js"></script>
+<script src="./dist/app.module.js"></script>
+<script src="./dist/controller/Product.controller.js"></script>
+<script src="./dist/controller/app.controller.js"></script>
+<script src="./dist/controller/login.controller.js"></script>
+
+
+<!-- Bootstrap for Styling -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+
+
+<style>
+#app-container {
+margin: 20px;
+}
+.product-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 20px;
+padding: 20px;
+}
+.product-card {
+border: 1px solid #ccc;
+padding: 15px;
+border-radius: 8px;
+text-align: center;
+background-color: #f9f9f9;
+transition: transform 0.3s ease-in-out;
+}
+.product-card:hover {
+transform: scale(1.05);
+}
+.product-card img {
+width: 100%;
+height: 180px;
+object-fit: cover;
+border-radius: 8px;
+}
+.product-card h5 {
+margin-top: 10px;
+font-size: 18px;
+font-weight: bold;
+}
+.product-card p {
+margin: 5px 0;
+}
+.product-card .price {
+font-weight: bold;
+color: green;
+font-size: 16px;
+}
+</style>
+</head>
+<body ng-app="myApp">
+<div id="app-container" class="container">
+<div ng-controller="ProductController as vm">
+<h2 class="text-center">{{ vm.message }}</h2>
+<hr/>
+<h3 class="text-center">Product List</h3>
+<div class="product-grid">
+<div class="product-card" ng-repeat="product in vm.products">
+
+<h5>{{ product.name }}</h5>
+<p class="price">₹{{ product.price }}</p>
+<p>{{ product.description }}</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
+

@@ -9,7 +9,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-
+import * as angular from 'angular';
 var AuthController = /** @class */ (function () {
     function AuthController($scope, $window) {
         this.$scope = $scope;
@@ -45,7 +45,7 @@ var AuthController = /** @class */ (function () {
         });
         if (isUserValid) {
             localStorage.setItem("loggedInUser", JSON.stringify(this.user));
-            this.$window.location.href = "product.html"; // Redirect to Product Page
+            this.$window.location.href = "product.html";
         }
         else {
             this.message = "Invalid Email or Password!";
@@ -54,6 +54,5 @@ var AuthController = /** @class */ (function () {
     AuthController.$inject = ['$scope', '$window'];
     return AuthController;
 }());
-
-// Register the controller with the AngularJS module
+export { AuthController };
 angular.module('myApp').controller('AuthController', AuthController);

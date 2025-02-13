@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    
+    <!-- AngularJS -->
+    <script src="../../angular.min.js"></script>
+    <script src="../../dist/modules/app.module.js"></script>
+    <script src="../../dist/controller/AuthController.js"></script>
+
+    <!-- Styles -->
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f1f3f6;
+        }
+
+        .login-container {
+            display: flex;
+            width: 60%;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .login-left {
+            width: 40%;
+            background: #1976D2;
+            color: white;
+            padding: 40px;
+        }
+
+        .login-left h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-left p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .login-right {
+            width: 60%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #ff6600;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .login-btn:hover {
+            background: #e65c00;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .register-link a {
+            color: #1976D2;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body ng-app="myApp">
+    <div class="login-container" ng-controller="AuthController as vm">
+        <!-- Left Section -->
+        <div class="login-left">
+            <h2>Login</h2>
+            <p>Get access to your Orders, Wishlist, and Recommendations</p>
+            <img src="../../assets/headshop.jpg" width="300" height="300">
+        </div>
+
+        <!-- Right Section -->
+        <div class="login-right">
+            <form ng-submit="vm.login()">
+                <label>Username / Email</label>
+                <input type="text" class="input-field" ng-model="vm.user.email" required>
+
+                <label>Password</label>
+                <input type="password" class="input-field" ng-model="vm.user.password" required>
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+
+            <p class="error-message">{{ vm.message }}</p>
+
+            <p class="register-link">New to the site? <a href="register.html">Create an account</a></p>
+        </div>
+    </div>
+</body>
+
+</html>
+

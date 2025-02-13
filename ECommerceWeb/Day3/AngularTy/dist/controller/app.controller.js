@@ -1,4 +1,4 @@
-
+import * as angular from 'angular';
 var MyController = /** @class */ (function () {
     function MyController($scope) {
         this.$scope = $scope;
@@ -13,5 +13,5 @@ var MyController = /** @class */ (function () {
     MyController.$inject = ['$scope'];
     return MyController;
 }());
-
+export { MyController };
 angular.module('myApp').controller('MyController', MyController);
