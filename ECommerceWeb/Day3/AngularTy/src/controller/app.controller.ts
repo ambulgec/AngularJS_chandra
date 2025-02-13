@@ -21,4 +21,4 @@ export class MyController {
   }
 }
 
-//angular.module('myApp').controller('MyController', MyController);
+angular.module('myApp').controller('MyController', MyController);

@@ -1,3 +1,4 @@
+
 var MyController = /** @class */ (function () {
     function MyController($scope) {
         this.$scope = $scope;
@@ -13,4 +14,4 @@ var MyController = /** @class */ (function () {
     return MyController;
 }());
 
-//angular.module('myApp').controller('MyController', MyController);
+angular.module('myApp').controller('MyController', MyController);
