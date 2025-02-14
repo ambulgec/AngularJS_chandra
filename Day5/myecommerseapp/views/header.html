@@ -1,0 +1,66 @@
+<head>
+    <style>
+        /* Add basic styling for the header */
+        .header {
+            background-color: lightblue;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .search-bar input {
+            padding: 12px;
+            font-size: 18px;
+        }
+
+        .cart-icon {
+            font-size: 20px;
+        }
+        .nav-cust{
+            color: black;
+            font-size: larger;
+            text-decoration: none;
+    }
+    </style>
+</head>
+<header class="header row">
+    <!-- Logo Section -->
+    <div class="logo col-lg-2">
+        <a><img style="height: 8vh; width: 8vh;" src="https://cdn4.iconfinder.com/data/icons/shopping-and-commerce-outline-color/512/shopping_commerce_21-1024.png"></a>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar col-lg-6" style="width: 100vh;">
+        <input type="text" style="width: 100%;" placeholder="Search for products...">
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="col-lg-3">
+        <ul class="nav-links">
+            <li><a class="nav-cust" href="#!/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <span>{{ cartItemCount }}</span></a></li>
+            <li><a class="nav-cust" href="/home">Home</a></li>
+            <li><a class="nav-cust" href="/shop">Shop</a></li>
+            <li><a class="nav-cust" href="/about">About Us</a></li>
+            <li><a class="nav-cust" href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>

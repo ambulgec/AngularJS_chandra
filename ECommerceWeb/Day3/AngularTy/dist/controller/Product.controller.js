@@ -1,4 +1,4 @@
-import * as angular from 'angular';
+
 var ProductController = /** @class */ (function () {
     function ProductController($scope) {
         this.$scope = $scope;
@@ -19,6 +19,6 @@ var ProductController = /** @class */ (function () {
     ProductController.$inject = ['$scope'];
     return ProductController;
 }());
-export { ProductController };
+
 // Register the controller with the AngularJS module
 angular.module('myApp').controller('ProductController', ProductController);

@@ -1,0 +1,27 @@
+<div class="container mt-4" ng-controller="ShoppingController as shoppingControllerCtrl">
+    <h3>Your Cart</h3>
+    <div class="row">
+        <div class="col-12">
+            <div ng-repeat="product in shoppingControllerCtrl.products" class="card" style="border: solid 1px #ddd; margin-bottom: 10px;">
+                <div class="row g-0">
+                    <div class="col-md-3">
+                        <img src="{{product.imgSrc}}" class="img-fluid rounded-start" alt="{{product.name}}" style="height: 100px; object-fit: cover;">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">{{product.name}}</h5>
+                            <p class="card-text">Type: {{product.type}} {{product.subtype}}<br>
+                                Price: <b>{{product.price | currency : "₹" : 2}}</b></p>
+                            <button class="btn btn-danger btn-sm" ng-click="shoppingControllerCtrl.removeFromCart(product)">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <!-- <h4>Total: <b>{{shoppingControllerCtrl.cart.reduce((total, product) => total + product.price, 0) | currency : "₹" : 2}}</b></h4> -->
+        </div>
+    </div>
+</div>

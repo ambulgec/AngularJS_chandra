@@ -1,0 +1,139 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-commerce App Layout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Styles */
+       /* Sidebar styles */
+       .sidebar {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 15px;
+            position: fixed;
+            top: 50px; /* below the header */
+            bottom: 50px; /* above the footer */
+            overflow-y: auto;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+
+    .sidebar .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar .logo img {
+      width: 100px;
+      height: auto;
+    }
+
+    .sidebar .menu-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      padding-left: 20px;
+    }
+
+    .sidebar .menu-section {
+      margin-bottom: 20px;
+    }
+
+    /* Header Styles */
+    header {
+      width: 100%;
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo img {
+      height: 50px;
+    }
+
+    /* Main Content Area Styles */
+    .main-content {
+      margin-left: 250px; /* Space for sidebar */
+      padding-top: 70px; /* Space for fixed header */
+      padding: 20px;
+      flex: 1;
+    }
+
+    /* Footer Styles */
+    footer {
+      width: 100%;
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto; /* Ensures footer is at the bottom */
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <img src="your-logo-url.png" alt="E-commerce Logo">
+    </div>
+    <div class="menu-section">
+      <div class="menu-title">Shop</div>
+      <a href="#">Home</a>
+      <a href="#">Shop All</a>
+      <a href="#">Categories</a>
+      <a href="#">Best Sellers</a>
+      <a href="#">New Arrivals</a>
+    </div>
+    <div class="menu-section">
+      <div class="menu-title">Account</div>
+      <a href="#">Sign In</a>
+      <a href="#">Create Account</a>
+      <a href="#">Order History</a>
+      <a href="#">Wishlist</a>
+    </div>
+    <div class="menu-section">
+      <div class="menu-title">Support</div>
+      <a href="#">Contact Us</a>
+      <a href="#">FAQ</a>
+      <a href="#">Shipping Information</a>
+      <a href="#">Returns & Exchanges</a>
+    </div>
+    <div class="menu-section">
+      <a href="#">My Cart</a>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div ng-controller="HomeController as vm">       
+<!-- <div ng-include src="'views/product.catalog.html'"></div> -->
+<div class="container mt-4" ng-controller="ProductCatalogController as vm">
+    <div class="row" style="display: flex; flex-wrap: wrap; gap: 15px;">
+        <!-- Loop through products -->
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="product in vm.products">
+            <div class="card" style="border: solid 1px #ddd; width: 100%; max-width: 250px; min-width: 200px;">
+                <img class="card-img-top" ng-src="{{product.imgSrc}}" alt="{{product.name}}" style="height: 25vh; object-fit: contain;">
+                <div class="card-body p-2">
+                    <h6 class="card-title" style="font-size: 1rem; line-height: 1.2;">{{product.name}}</h6>
+                    <p class="card-text" style="font-size: 0.9rem; line-height: 1.5;">
+                        Type: {{product.type}} {{product.subtype}} <br>
+                        Price: <b>{{product.price | currency : "₹" : 2}}</b>
+                    </p>
+                    <button class="btn btn-primary stretched-link btn-sm" ng-click="vm.onAddCart(product)">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

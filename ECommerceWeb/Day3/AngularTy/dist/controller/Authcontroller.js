@@ -9,7 +9,7 @@ var __assign = (this && this.__assign) || function () {
     };
     return __assign.apply(this, arguments);
 };
-import * as angular from 'angular';
+
 var AuthController = /** @class */ (function () {
     function AuthController($scope, $window) {
         this.$scope = $scope;
@@ -54,5 +54,5 @@ var AuthController = /** @class */ (function () {
     AuthController.$inject = ['$scope', '$window'];
     return AuthController;
 }());
-export { AuthController };
+
 angular.module('myApp').controller('AuthController', AuthController);
