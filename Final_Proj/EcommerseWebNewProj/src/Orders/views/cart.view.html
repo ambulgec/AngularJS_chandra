@@ -1,0 +1,49 @@
+<div class="product-container">
+    <h2 class="text-center my-4">Your Cart</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="product-card shadow-lg p-3 mb-4 bg-white rounded">
+                <div class="product-card-body card-body">
+                    <div ng-if="vm.cart.length === 0" class="text-center">
+                        <h5 class="text-muted">Your cart is empty.</h5>
+                        <a href="#!/products" class="btn btn-primary mt-3">Shop Now</a>
+                    </div>
+
+                    <div class="list-group" ng-if="vm.cart.length > 0">
+                        <div class="list-group-item d-flex align-items-center product-item" ng-repeat="product in vm.cart">
+                            <img class="product-image rounded" ng-src="{{ product.imgSrc }}" alt="{{ product.name }}">
+                            <div class="product-details flex-grow-1 ml-3">
+                                <h5 class="product-title">{{ product.name }}</h5>
+                                <p class="product-price text-muted">Price: ₹{{ product.price }}</p>
+
+                                <!-- Quantity Control -->
+                                <div class="product-quantity-control d-flex align-items-center">
+                                    <button class="btn btn-sm btn-secondary product-quantity-btn" ng-click="vm.updateQuantity(product, -1)">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                    <span class="product-quantity mx-2 font-weight-bold">{{ product.quantity }}</span>
+                                    <button class="btn btn-sm btn-primary product-quantity-btn" ng-click="vm.updateQuantity(product, 1)">
+                                        <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+
+                                
+                            </div>
+                            <button class="btn btn-danger btn-sm product-remove-btn" ng-click="vm.removeFromCart(product)">
+                                Remove
+                            </button>
+                            
+                        </div>
+                    </div>
+
+                    <!-- Cart Summary -->
+                    <div class="mt-4 text-right" ng-if="vm.cart.length > 0">
+                        <h4 class="font-weight-bold">Total: ₹{{ vm.getCartTotal() }}</h4>
+                        <button class="btn btn-success btn-lg mt-2">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

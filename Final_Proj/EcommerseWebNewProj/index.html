@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS MVC Auth</title>
+
+    
+ 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+ <link rel="stylesheet" href="../EcommerseWebNewProj/assets/style.css">
+ 
+
+
+    
+    <script src="./angular.min.js"></script>
+    <script src="./angular-route.min.js"></script>
+    <script src="./dist/app.module.js"></script>
+    <script src="./dist/app.routes.js"></script>
+   
+    <script src="./dist/Authentication/servises/auth.servises.js"></script>
+    <script src="./dist/Authentication/controller/auth.controller.js"></script>
+    <script src="./dist/Prodct-catlog/controller/product.controller.js"></script>
+    <script src="./dist/Prodct-catlog/servises/product.service.js"></script>
+    <script src="./dist/Orders/controller/order.controller.js"></script>
+
+  
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+
+
+<body ng-app="ecomApp" ng-controller="ProductController as vm">
+    <div ng-include="'src/Views/header.html'"></div>  
+
+    <div ng-view></div>
+
+    <div ng-include="'src/Views/footer.html'"></div>  
+</body>
+
+
+
+
+<!-- <body ng-app="ecomApp">
+    <div>
+    <div ng-include="'src/Views/header.html'"></div>  
+
+    <div ng-view></div>
+
+    <div ng-include="'src/Views/footer.html'"></div>  
+</div>
+</body> -->
+
+<!-- <body ng-app="ecomApp">
+    <div  ng-include="./src/Views/header.html"></div>
+  
+    <div ng-view></div>
+
+    <div  ng-include="./src/Views/footer.html"></div>
+
+
+</body> -->
+</html>
+
