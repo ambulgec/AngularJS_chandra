@@ -14,5 +14,10 @@
         <a href="#!/cart" class="btn btn-light">Cart {{ vm.cart.length }}</a>
         <button class="btn btn-danger" ng-click="vm.logout()">Logout</button>
     </div>
+
+    <div class="d-flex align-items-center text-white mr-3" ng-if="vm.loggedInUser">
+        <i class="fa fa-user-circle fa-lg mr-2"></i> 
+        <span>{{ vm.loggedInUser }}</span>
+    </div>
 </nav>
 

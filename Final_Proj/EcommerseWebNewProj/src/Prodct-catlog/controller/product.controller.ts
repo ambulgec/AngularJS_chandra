@@ -3,18 +3,24 @@ import * as angular from 'angular';
 import { ProductService, Product } from '../servises/product.service';
 
 export class ProductController {
-    static $inject = ['ProductService', '$window'];
+    static $inject = ['ProductService', '$window','$rootScope'];
 
     products: Product[] = [];
     cart: Product[] = [];
     loggedInUserId: string | null = null;
+    loggedInUser: string | null = null;
     filteredProducts: Product[] = [];
+    selectedQuantities: { [key: string]: number } = {};
+    showHeader: boolean = false;
 
-    constructor(private productService: ProductService, private $window: angular.IWindowService,private $scope: angular.IScope) {
+    constructor(private productService: ProductService,private $window: angular.IWindowService,private $scope: angular.IScope) {
         this.loadProducts();
         this.loadCart();
         this.$window.scrollTo(0, 0);
-        
+        this.loadUser();
+
+
+     
     }
 
     
@@ -45,6 +51,13 @@ export class ProductController {
             this.$window.location.reload()
         });
     }
+
+
+    updateDisplayedQuantity(product: Product, amount: number) {
+        let newQuantity = (this.selectedQuantities[product.id] || 0) + amount;
+        this.selectedQuantities[product.id] = newQuantity < 0 ? 0 : newQuantity; // Prevent negative values
+        this.$scope.$applyAsync();
+    }
     
 
     loadCart() {
@@ -60,8 +73,41 @@ export class ProductController {
 
     
 
-    addToCart(product: Product, amount: number) {
-        this.loggedInUserId = localStorage.getItem('loggedInUserId'); 
+    // addToCart(product: Product, amount: number) {
+    //     this.loggedInUserId = localStorage.getItem('loggedInUserId'); 
+    //     if (!this.loggedInUserId) {
+    //         alert('Please log in to add items to the cart.');
+    //         return;
+    //     }
+
+    //     let users = JSON.parse(localStorage.getItem('users') || '[]');
+    //     const userIndex = users.findIndex((user: any) => String(user.id) === String(this.loggedInUserId));
+    //     if (userIndex === -1) return;
+
+    //     if (!users[userIndex].cart) {
+    //         users[userIndex].cart = [];
+    //     }
+
+    //     let existingProduct = users[userIndex].cart.find((p: Product) => p.id === product.id);
+
+    //     if (existingProduct) {
+    //         existingProduct.quantity = (existingProduct.quantity || 0) + amount;
+    //     } else {
+    //         users[userIndex].cart.push({ ...product, quantity: 1 });
+    //     }
+
+  
+    //     localStorage.setItem('users', JSON.stringify(users));
+
+        
+    //     localStorage.setItem('loggedInUserCart', JSON.stringify(users[userIndex].cart));
+
+    //     this.cart = users[userIndex].cart;
+    //     console.log('Updated Cart:', this.cart);
+    //     this.$scope.$applyAsync();
+    // }
+    addToCart(product: Product) {
+        this.loggedInUserId = localStorage.getItem('loggedInUserId');
         if (!this.loggedInUserId) {
             alert('Please log in to add items to the cart.');
             return;
@@ -78,22 +124,18 @@ export class ProductController {
         let existingProduct = users[userIndex].cart.find((p: Product) => p.id === product.id);
 
         if (existingProduct) {
-            existingProduct.quantity = (existingProduct.quantity || 0) + amount;
+            existingProduct.quantity = this.selectedQuantities[product.id] || 1; // Use UI quantity
         } else {
-            users[userIndex].cart.push({ ...product, quantity: 1 });
+            users[userIndex].cart.push({ ...product, quantity: this.selectedQuantities[product.id] || 1 });
         }
 
-  
         localStorage.setItem('users', JSON.stringify(users));
-
-        
         localStorage.setItem('loggedInUserCart', JSON.stringify(users[userIndex].cart));
 
         this.cart = users[userIndex].cart;
         console.log('Updated Cart:', this.cart);
         this.$scope.$applyAsync();
     }
-
 
 
     updateQuantity(product: Product, amount: number) {
@@ -170,6 +212,31 @@ export class ProductController {
                 this.cart = users[userIndex].cart;
             }
 
+
+            // showFooter(): boolean {
+            //     let path = this.$location.path();
+            //     return path === '/cart' || path === '/products';
+            // }
+
+
+            loadUser() {
+               
+                    const userData = localStorage.getItem('loggedInUser');
+                
+                    if (userData) {
+                        try {
+                            const user = JSON.parse(userData); 
+                            this.loggedInUser = user.name || null; 
+                        } catch (error) {
+                            console.error("Error parsing loggedInUser:", error);
+                            this.loggedInUser = null; 
+                        }
+                    } else {
+                        this.loggedInUser = null;
+                    }
+                };
+                
+            
     logout() {
         localStorage.removeItem('loggedInUser');
         localStorage.removeItem('loggedInUserId'); 

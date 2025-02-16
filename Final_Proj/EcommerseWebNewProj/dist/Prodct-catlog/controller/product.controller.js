@@ -18,10 +18,14 @@ var ProductController = /** @class */ (function () {
         this.products = [];
         this.cart = [];
         this.loggedInUserId = null;
+        this.loggedInUser = null;
         this.filteredProducts = [];
+        this.selectedQuantities = {};
+        this.showHeader = false;
         this.loadProducts();
         this.loadCart();
         this.$window.scrollTo(0, 0);
+        this.loadUser();
     }
     ProductController.prototype.loadProducts = function () {
         var _this = this;
@@ -41,8 +45,13 @@ var ProductController = /** @class */ (function () {
                 return __assign(__assign({}, product), { quantity: cartItem ? cartItem.quantity : 0 // Use cart quantity if exists, else 0
                  });
             });
-           
+          
         });
+    };
+    ProductController.prototype.updateDisplayedQuantity = function (product, amount) {
+        var newQuantity = (this.selectedQuantities[product.id] || 0) + amount;
+        this.selectedQuantities[product.id] = newQuantity < 0 ? 0 : newQuantity; // Prevent negative values
+        this.$scope.$applyAsync();
     };
     ProductController.prototype.loadCart = function () {
         var _this = this;
@@ -53,7 +62,31 @@ var ProductController = /** @class */ (function () {
         var user = users.find(function (u) { return String(u.id) === String(_this.loggedInUserId); });
         this.cart = user ? user.cart || [] : [];
     };
-    ProductController.prototype.addToCart = function (product, amount) {
+    // addToCart(product: Product, amount: number) {
+    //     this.loggedInUserId = localStorage.getItem('loggedInUserId'); 
+    //     if (!this.loggedInUserId) {
+    //         alert('Please log in to add items to the cart.');
+    //         return;
+    //     }
+    //     let users = JSON.parse(localStorage.getItem('users') || '[]');
+    //     const userIndex = users.findIndex((user: any) => String(user.id) === String(this.loggedInUserId));
+    //     if (userIndex === -1) return;
+    //     if (!users[userIndex].cart) {
+    //         users[userIndex].cart = [];
+    //     }
+    //     let existingProduct = users[userIndex].cart.find((p: Product) => p.id === product.id);
+    //     if (existingProduct) {
+    //         existingProduct.quantity = (existingProduct.quantity || 0) + amount;
+    //     } else {
+    //         users[userIndex].cart.push({ ...product, quantity: 1 });
+    //     }
+    //     localStorage.setItem('users', JSON.stringify(users));
+    //     localStorage.setItem('loggedInUserCart', JSON.stringify(users[userIndex].cart));
+    //     this.cart = users[userIndex].cart;
+    //     console.log('Updated Cart:', this.cart);
+    //     this.$scope.$applyAsync();
+    // }
+    ProductController.prototype.addToCart = function (product) {
         var _this = this;
         this.loggedInUserId = localStorage.getItem('loggedInUserId');
         if (!this.loggedInUserId) {
@@ -69,10 +102,10 @@ var ProductController = /** @class */ (function () {
         }
         var existingProduct = users[userIndex].cart.find(function (p) { return p.id === product.id; });
         if (existingProduct) {
-            existingProduct.quantity = (existingProduct.quantity || 0) + amount;
+            existingProduct.quantity = this.selectedQuantities[product.id] || 1; // Use UI quantity
         }
         else {
-            users[userIndex].cart.push(__assign(__assign({}, product), { quantity: 1 }));
+            users[userIndex].cart.push(__assign(__assign({}, product), { quantity: this.selectedQuantities[product.id] || 1 }));
         }
         localStorage.setItem('users', JSON.stringify(users));
         localStorage.setItem('loggedInUserCart', JSON.stringify(users[userIndex].cart));
@@ -136,13 +169,34 @@ var ProductController = /** @class */ (function () {
         localStorage.setItem('loggedInUserCart', JSON.stringify(users[userIndex].cart));
         this.cart = users[userIndex].cart;
     };
+    // showFooter(): boolean {
+    //     let path = this.$location.path();
+    //     return path === '/cart' || path === '/products';
+    // }
+    ProductController.prototype.loadUser = function () {
+        var userData = localStorage.getItem('loggedInUser');
+        if (userData) {
+            try {
+                var user = JSON.parse(userData);
+                this.loggedInUser = user.name || null;
+            }
+            catch (error) {
+                console.error("Error parsing loggedInUser:", error);
+                this.loggedInUser = null;
+            }
+        }
+        else {
+            this.loggedInUser = null;
+        }
+    };
+    ;
     ProductController.prototype.logout = function () {
         localStorage.removeItem('loggedInUser');
         localStorage.removeItem('loggedInUserId');
         localStorage.removeItem('loggedInUserCart');
         this.$window.location.href = "#!/login";
     };
-    ProductController.$inject = ['ProductService', '$window'];
+    ProductController.$inject = ['ProductService', '$window', '$rootScope'];
     return ProductController;
 }());
 
