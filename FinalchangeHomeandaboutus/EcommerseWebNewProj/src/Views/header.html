@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary" ng-controller="ProductController as vm">
+    <a class="navbar-brand text-white" href="#">E-Commerce</a>
+
+    <!-- Left Side: Home & About Us Buttons -->
+    <div class="navbar-nav">
+        <a href="#!/home" class="btn btn-light mx-2">Home</a>
+        <a ng-if="vm.loggedInUser" href="#!/products" class="btn btn-light mx-2">Products</a>
+        <a href="#!/about" class="btn btn-light mx-2">About Us</a>
+    </div>
+
+    <!-- Right Side: Cart, Logout, and User Profile -->
+    <div class="ml-auto d-flex align-items-center justify-content-between" ng-if="vm.loggedInUser">
+        <!-- Cart Button -->
+        <a href="#!/cart" class="btn btn-light mx-2">
+            <i class="fa fa-shopping-cart"></i> {{ vm.cart.length }}
+        </a>
+
+        <!-- Logout Button -->
+        <button class="btn btn-danger mx-2" ng-click="vm.logout()">Logout</button>
+
+        <!-- User Profile -->
+        <div class="d-flex align-items-center text-white mx-2">
+            <i class="fa fa-user-circle fa-lg mr-2"></i> 
+            <span>{{ vm.loggedInUser }}</span>
+        </div>
+    </div>
+</nav>
