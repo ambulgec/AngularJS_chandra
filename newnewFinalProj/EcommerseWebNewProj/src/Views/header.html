@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary" ng-controller="ProductController as vm">
+    <a class="navbar-brand text-white" href="#">E-Commerce</a>
+
+    <!-- Centered Search -->
+    <!-- <form class="form-inline mx-auto" ng-submit="vm.setSearchQuery()">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search products..." aria-label="Search"
+            ng-model="vm.searchQuery">
+        <button class="btn btn-light my-2 my-sm-0" type="submit">
+            <i class="fa fa-search"></i>
+        </button>
+    </form> -->
+
+    <!-- <div class="ml-auto" ng-if="vm.loggedInUser">
+        <a href="#!/cart" class="btn btn-light">Cart {{ vm.cart.length }}</a>
+        <button class="btn btn-danger" ng-click="vm.logout()">Logout</button>
+    </div> -->
+
+    <!-- <div class="ml-auto" ng-if="vm.loggedInUser">
+        <a href="#!/cart" class="btn btn-light">
+            <i class="fa fa-shopping-cart"></i> {{ vm.cart.length }}
+        </a>
+        <button class="btn btn-danger" ng-click="vm.logout()">Logout</button>
+       
+    </div>
+    
+    <div class="d-flex align-items-center text-white mr-3" ng-if="vm.loggedInUser">
+        <i class="fa fa-user-circle fa-lg mr-2"></i> 
+        <span>{{ vm.loggedInUser }}</span>
+    </div> -->
+
+    <div class="ml-auto d-flex align-items-center justify-content-between" ng-if="vm.loggedInUser">
+        <!-- Cart Button -->
+        <a href="#!/cart" class="btn btn-light mx-2">
+            <i class="fa fa-shopping-cart"></i> {{ vm.cart.length }}
+        </a>
+    
+        <!-- Logout Button -->
+        <button class="btn btn-danger mx-2" ng-click="vm.logout()">Logout</button>
+    
+        <!-- User Profile -->
+        <div class="d-flex align-items-center text-white mx-2">
+            <i class="fa fa-user-circle fa-lg mr-2"></i> 
+            <span>{{ vm.loggedInUser }}</span>
+        </div>
+    </div>
+    
+   
+</nav>
+

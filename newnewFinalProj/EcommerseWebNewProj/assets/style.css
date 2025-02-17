@@ -1,0 +1,322 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* Product Card Styling */
+.product-card {
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.product-card:hover {
+    transform: scale(1.02);
+}
+
+/* Product Image */
+.product-image {
+    height: 250px; /* Fixed size */
+    object-fit: cover; /* Ensures proper image fit */
+}
+
+/* Quantity Control Styling */
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Quantity Button */
+.qty-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.qty-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Quantity Display */
+.quantity {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Add to Cart Button */
+.btn-primary {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #ff6600;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e65c00;
+}
+
+/* Header Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #343a40;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+
+/* //login */
+
+ * {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.login-container {
+    display: flex;
+    width: 80%;
+    background: white;
+    border-radius: 8px;
+    /* background: url('./backimage.png') no-repeat center center; */
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-left {
+    width: 40%;
+    background: #1976D2;
+    color: black;
+    padding: 40px;
+    background: url('./backimage.png') no-repeat center center;
+    background-size: 300px 300px;
+}
+
+.login-left h2 {
+    margin-bottom: 20px;
+}
+
+.login-left p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.login-right {
+    width: 60%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #ff6600;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.login-btn:hover {
+    background: #e65c00;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.register-link a {
+    color: #1976D2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* //register */
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f1f3f6;
+}
+
+/* Register Container */
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+/* Register Content (Two Sections) */
+.register-content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Left & Right Sections */
+.register-left,
+.register-right {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Input Fields */
+.input-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Bottom Section */
+.register-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Register Button */
+.register-btn {
+    width: 50%;
+    padding: 12px;
+    background: #ff6600;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.register-btn:hover {
+    background: #e65c00;
+}
+
+/* Login Link */
+.login-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.login-link a {
+    color: #1976D2;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Error Message */
+.error-message-register {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
+
+/* General Reset */
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f1f3f6;
+    padding-top: 80px; /* Space for fixed navbar */
+    padding-bottom: 80px; /* Space for footer */
+}
+
+/* HEADER NAVBAR */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #007bff;
+    padding: 15px;
+}
+
+/* FOOTER */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #343a40;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
