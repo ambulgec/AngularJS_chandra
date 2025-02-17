@@ -1,0 +1,36 @@
+<div class="product-container">
+    <h2 class="text-center my-4">Product Catalog</h2>
+
+    <div class="row product-grid">
+        <div class="col-md-4 col-lg-4 col-sm-6 col-xs-12" ng-repeat="product in vm.products">
+            <div class="product-card card">
+                <!-- Ensure Image Appears at the Top -->
+                <img class="product-image card-img-top" ng-src="{{ product.imgSrc }}" alt="{{ product.name }}">
+
+                <div class="product-card-body card-body">
+                    <h5 class="product-title card-title">{{ product.name }}</h5>
+                    <p class="product-price card-text">Price: ₹{{ product.price }}</p>
+
+                    <!-- Quantity Control (Only Changes UI, Not Cart) -->
+                    <div class="product-quantity-control d-flex justify-content-between align-items-center">
+                        <button class="btn btn-sm btn-secondary product-quantity-btn"
+                            ng-click="vm.updateDisplayedQuantity(product, -1)">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        <span class="product-quantity">{{ vm.selectedQuantities[product.id] || 0 }}</span>
+                        <button class="btn btn-sm btn-primary product-quantity-btn"
+                            ng-click="vm.updateDisplayedQuantity(product, 1)">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+
+                    <!-- Add to Cart Button (Uses Displayed Quantity) -->
+                    <button class="product-btn-add btn btn-warning btn-block mt-3"
+                        ng-click="vm.addToCart(product)">
+                        <i class="fa fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

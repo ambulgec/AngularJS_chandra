@@ -1,0 +1,31 @@
+<div class="login-container" ng-controller="AuthController as vm">
+ 
+        <div class="login-left">
+            <h2>Login</h2>
+            <p>Get access to your Orders, Wishlist, and Recommendations</p>
+            <img src="../../../assets/shop.jpg" width="300" height="300">
+        </div>
+
+     
+        <div class="login-right">
+            <form ng-submit="vm.login()">
+                <label>Username / Email</label>
+                <input type="text" class="input-field" ng-model="vm.user.email" required>
+
+                <label>Password</label>
+                <input type="password" class="input-field" ng-model="vm.user.password" required>
+
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+
+            <p class="error-message">{{ vm.message }}</p>
+
+            <p class="register-link">New to the site? <a href="#!/register">Create an account</a></p>
+        </div>
+    </div>
+
+
+
+
+
+
